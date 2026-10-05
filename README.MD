@@ -1,6 +1,4 @@
 # Dual-Backend Pokédex
-======================
-
 A full-stack Pokédex application with one frontend that can switch between two REST API backends:
 
 - ASP.NET Core (C#) — Port 5000
