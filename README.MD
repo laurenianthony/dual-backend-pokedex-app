@@ -7,12 +7,12 @@ A full-stack Pokédex application with one frontend that can switch between two 
 ## Project Structure
 
 FINAL ASPNET/
-└── pokedex aspnet/       # ASP.NET Core backend
+--- pokedex aspnet/        ASP.NET Core backend
 
 FINAL OOP/
-└── FINAL POKEDEX/        # Spring Boot backend
+--- FINAL POKEDEX/         Spring Boot backend
 
-pokedex-frontend.html     # Frontend
+pokedex-frontend.html      Frontend
 
 ## Requirements
 
