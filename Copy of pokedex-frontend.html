@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokédex — Gen I</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #e3350d;
+    --dark-red: #9b1a05;
+    --black: #1a1a2e;
+    --dark: #16213e;
+    --panel: #0f3460;
+    --screen-bg: #9bbc0f;
+    --screen-dark: #306230;
+    --screen-light: #8bac0f;
+    --gold: #f0c040;
+    --white: #f8f8f8;
+    --gray: #c0c0c0;
+    --type-normal: #A8A878; --type-fire: #F08030; --type-water: #6890F0;
+    --type-grass: #78C850; --type-electric: #F8D030; --type-ice: #98D8D8;
+    --type-fighting: #C03028; --type-poison: #A040A0; --type-ground: #E0C068;
+    --type-flying: #A890F0; --type-psychic: #F85888; --type-bug: #A8B820;
+    --type-rock: #B8A038; --type-ghost: #705898; --type-dragon: #7038F8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(227,53,13,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(104,144,240,0.1) 0%, transparent 50%);
+  }
+
+  header {
+    background: var(--red);
+    padding: 0;
+    border-bottom: 4px solid var(--dark-red);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 18px;
+    color: var(--gold);
+    text-shadow: 2px 2px 0 var(--dark-red), -1px -1px 0 #000;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .logo span { color: white; }
+
+  .header-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+
+  .api-selector {
+    display: flex;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.2);
+  }
+
+  .api-btn {
+    padding: 8px 14px;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .api-btn.active {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  .search-bar {
+    flex: 1;
+    min-width: 180px;
+    padding: 9px 16px;
+    border-radius: 8px;
+    border: 2px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.3);
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .search-bar::placeholder { color: rgba(255,255,255,0.5); }
+  .search-bar:focus { outline: none; border-color: var(--gold); }
+
+  .filter-type {
+    padding: 9px 12px;
+    border-radius: 8px;
+    border: 2px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.3);
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .filter-type:focus { outline: none; border-color: var(--gold); }
+  .filter-type option { background: var(--black); }
+
+  .btn-add {
+    padding: 9px 18px;
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-add:hover { background: white; transform: translateY(-1px); }
+
+  .status-bar {
+    background: var(--dark);
+    padding: 6px 24px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #4caf50;
+    box-shadow: 0 0 6px #4caf50;
+    animation: pulse 2s infinite;
+  }
+
+  .status-dot.error { background: var(--red); box-shadow: 0 0 6px var(--red); animation: none; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
+  }
+
+  main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--dark);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.07);
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.2);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  }
+
+  .card-img {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sprite {
+    width: 96px; height: 96px;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+    transition: transform 0.2s;
+  }
+
+  .card:hover .sprite { transform: scale(1.1) translateY(-4px); }
+
+  .card-body {
+    padding: 12px;
+  }
+
+  .card-num {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 4px;
+  }
+
+  .card-name {
+    font-size: 15px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .types {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+
+  .type-badge {
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  }
+
+  .stats-mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .stat-mini { display: flex; justify-content: space-between; }
+  .stat-val { font-weight: 700; color: var(--gold); }
+
+  .card-actions {
+    display: flex;
+    gap: 6px;
+    padding: 8px 12px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.2);
+  }
+
+  .btn-edit, .btn-del {
+    flex: 1;
+    padding: 6px;
+    border: none;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-edit { background: var(--panel); color: var(--gold); }
+  .btn-edit:hover { background: var(--gold); color: var(--black); }
+  .btn-del { background: rgba(227,53,13,0.2); color: var(--red); }
+  .btn-del:hover { background: var(--red); color: white; }
+
+  /* Card bg color by primary type */
+  .card-img.bg-fire { background: linear-gradient(135deg, #3d1a00, #6b2a0a); }
+  .card-img.bg-water { background: linear-gradient(135deg, #0a1a3d, #0a2a6b); }
+  .card-img.bg-grass { background: linear-gradient(135deg, #0a2a0a, #1a4a0a); }
+  .card-img.bg-electric { background: linear-gradient(135deg, #2a2000, #4a3a00); }
+  .card-img.bg-psychic { background: linear-gradient(135deg, #3d001a, #6b002a); }
+  .card-img.bg-ice { background: linear-gradient(135deg, #0a2a2a, #0a3a4a); }
+  .card-img.bg-dragon { background: linear-gradient(135deg, #1a0a3d, #2a0a6b); }
+  .card-img.bg-ghost { background: linear-gradient(135deg, #1a0a2a, #2a0a4a); }
+  .card-img.bg-bug { background: linear-gradient(135deg, #1a2a00, #2a4a00); }
+  .card-img.bg-rock { background: linear-gradient(135deg, #2a2000, #3a3000); }
+  .card-img.bg-ground { background: linear-gradient(135deg, #2a1a00, #4a3000); }
+  .card-img.bg-poison { background: linear-gradient(135deg, #2a002a, #4a004a); }
+  .card-img.bg-fighting { background: linear-gradient(135deg, #2a0000, #4a0a0a); }
+  .card-img.bg-normal { background: linear-gradient(135deg, #1a1a1a, #2a2a2a); }
+  .card-img.bg-flying { background: linear-gradient(135deg, #0a0a2a, #1a1a4a); }
+
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--dark);
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.1);
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.8);
+    animation: modalIn 0.2s ease-out;
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .modal-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: var(--gold);
+  }
+
+  .btn-close {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+  }
+
+  .btn-close:hover { background: var(--red); }
+
+  .modal-body { padding: 24px; }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: border-color 0.15s;
+  }
+
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.08);
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .type-checkboxes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .type-check {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  .type-check input[type="checkbox"] {
+    width: auto;
+    padding: 0;
+    cursor: pointer;
+    accent-color: var(--gold);
+  }
+
+  .type-check span {
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .btn-cancel {
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.08);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .btn-cancel:hover { background: rgba(255,255,255,0.15); }
+
+  .btn-save {
+    padding: 10px 24px;
+    background: var(--gold);
+    border: none;
+    border-radius: 8px;
+    color: var(--black);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-save:hover { background: white; transform: translateY(-1px); }
+
+  .loading {
+    text-align: center;
+    padding: 60px 20px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .loading::after {
+    content: '';
+    display: block;
+    width: 40px; height: 40px;
+    border: 3px solid rgba(255,255,255,0.1);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    margin: 20px auto 0;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: rgba(255,255,255,0.3);
+    font-size: 14px;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    background: #1e1e2e;
+    border: 2px solid var(--gold);
+    color: white;
+    font-weight: 700;
+    font-size: 13px;
+    z-index: 9999;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s;
+    max-width: 300px;
+  }
+
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.success { border-color: #4caf50; }
+  .toast.error { border-color: var(--red); }
+
+  .count-badge {
+    background: rgba(0,0,0,0.3);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    border: 1px solid rgba(240,192,64,0.3);
+  }
+
+  .confirm-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .confirm-overlay.open { display: flex; }
+
+  .confirm-box {
+    background: var(--dark);
+    border: 2px solid var(--red);
+    border-radius: 16px;
+    padding: 28px;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(227,53,13,0.3);
+  }
+
+  .confirm-box p {
+    font-size: 14px;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .confirm-box .confirm-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .confirm-btns { display: flex; gap: 10px; justify-content: center; }
+
+  .btn-confirm-del {
+    padding: 10px 20px;
+    background: var(--red);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .btn-confirm-del:hover { filter: brightness(1.2); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">POKÉ<span>DEX</span></div>
+    <div class="header-controls">
+      <div class="api-selector">
+        <button class="api-btn active" onclick="switchApi('aspnet')">ASP.NET<br><span style="font-size:6px;opacity:0.7">:5000</span></button>
+        <button class="api-btn" onclick="switchApi('springboot')">Spring<br><span style="font-size:6px;opacity:0.7">:8080</span></button>
+      </div>
+      <input type="text" class="search-bar" id="searchInput" placeholder="🔍 Search Pokémon..." oninput="filterCards()">
+      <select class="filter-type" id="typeFilter" onchange="filterCards()">
+        <option value="">All Types</option>
+        <option value="Normal">Normal</option>
+        <option value="Fire">Fire</option>
+        <option value="Water">Water</option>
+        <option value="Grass">Grass</option>
+        <option value="Electric">Electric</option>
+        <option value="Ice">Ice</option>
+        <option value="Fighting">Fighting</option>
+        <option value="Poison">Poison</option>
+        <option value="Ground">Ground</option>
+        <option value="Flying">Flying</option>
+        <option value="Psychic">Psychic</option>
+        <option value="Bug">Bug</option>
+        <option value="Rock">Rock</option>
+        <option value="Ghost">Ghost</option>
+        <option value="Dragon">Dragon</option>
+      </select>
+      <button class="btn-add" onclick="openModal()">+ ADD</button>
+    </div>
+  </div>
+</header>
+
+<div class="status-bar" id="statusBar">
+  <div class="status-dot" id="statusDot"></div>
+  <span id="statusText">Connecting...</span>
+  <span class="count-badge" id="countBadge" style="margin-left:auto">— Pokémon</span>
+</div>
+
+<main>
+  <div id="grid" class="grid">
+    <div class="loading">Loading Pokédex...</div>
+  </div>
+</main>
+
+<!-- Add/Edit Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">ADD POKÉMON</div>
+      <button class="btn-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="editId">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="fName" placeholder="Pokémon name">
+      </div>
+      <div class="form-group">
+        <label>Types (select up to 2)</label>
+        <div class="type-checkboxes" id="typeCheckboxes"></div>
+      </div>
+      <div class="stats-grid">
+        <div class="form-group">
+          <label>HP</label>
+          <input type="number" id="fHp" placeholder="45" min="1" max="999">
+        </div>
+        <div class="form-group">
+          <label>Attack</label>
+          <input type="number" id="fAttack" placeholder="49" min="1" max="999">
+        </div>
+        <div class="form-group">
+          <label>Defense</label>
+          <input type="number" id="fDefense" placeholder="49" min="1" max="999">
+        </div>
+        <div class="form-group">
+          <label>Speed</label>
+          <input type="number" id="fSpeed" placeholder="45" min="1" max="999">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="savePokemon()">SAVE</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <p>Release this Pokémon?</p>
+    <div class="confirm-name" id="confirmName"></div>
+    <div class="confirm-btns">
+      <button class="btn-cancel" onclick="closeConfirm()">Keep</button>
+      <button class="btn-confirm-del" onclick="confirmDelete()">Release!</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const APIS = {
+  aspnet: 'http://localhost:5000/api/pokemon',
+  springboot: 'http://localhost:8080/api/pokemon'
+};
+
+const TYPE_COLORS = {
+  Normal:'#A8A878', Fire:'#F08030', Water:'#6890F0', Grass:'#78C850',
+  Electric:'#F8D030', Ice:'#98D8D8', Fighting:'#C03028', Poison:'#A040A0',
+  Ground:'#E0C068', Flying:'#A890F0', Psychic:'#F85888', Bug:'#A8B820',
+  Rock:'#B8A038', Ghost:'#705898', Dragon:'#7038F8'
+};
+
+const ALL_TYPES = Object.keys(TYPE_COLORS);
+
+let currentApi = 'aspnet';
+let allPokemon = [];
+let deleteTarget = null;
+
+function apiUrl(suffix = '') {
+  return APIS[currentApi] + suffix;
+}
+
+function switchApi(api) {
+  currentApi = api;
+  document.querySelectorAll('.api-btn').forEach((b, i) => {
+    b.classList.toggle('active', (i === 0 && api === 'aspnet') || (i === 1 && api === 'springboot'));
+  });
+  loadPokemon();
+}
+
+async function loadPokemon() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '<div class="loading">Loading Pokédex...</div>';
+  setStatus('connecting');
+
+  try {
+    const res = await fetch(apiUrl());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    allPokemon = await res.json();
+    setStatus('ok', `Connected to ${currentApi === 'aspnet' ? 'ASP.NET (:5000)' : 'Spring Boot (:8080)'}`);
+    renderGrid(allPokemon);
+  } catch (e) {
+    setStatus('error', 'Cannot connect — is your server running?');
+    grid.innerHTML = `<div class="empty">⚠️ Could not connect to the API.<br><br>Make sure your ${currentApi === 'aspnet' ? 'ASP.NET (:5000)' : 'Spring Boot (:8080)'} server is running.</div>`;
+  }
+}
+
+function setStatus(state, msg) {
+  const dot = document.getElementById('statusDot');
+  const txt = document.getElementById('statusText');
+  dot.className = 'status-dot' + (state === 'error' ? ' error' : '');
+  txt.textContent = msg || (state === 'connecting' ? 'Connecting...' : 'Ready');
+}
+
+function filterCards() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const t = document.getElementById('typeFilter').value;
+  const filtered = allPokemon.filter(p => {
+    const matchName = p.name.toLowerCase().includes(q) || String(p.id).includes(q);
+    const matchType = !t || p.types.includes(t);
+    return matchName && matchType;
+  });
+  renderGrid(filtered);
+}
+
+function renderGrid(list) {
+  const grid = document.getElementById('grid');
+  const badge = document.getElementById('countBadge');
+  badge.textContent = `${list.length} Pokémon`;
+
+  if (list.length === 0) {
+    grid.innerHTML = '<div class="empty">No Pokémon found.</div>';
+    return;
+  }
+
+  grid.innerHTML = list.map(p => {
+    const primaryType = (p.types[0] || 'Normal').toLowerCase();
+    const typeBadges = p.types.map(t =>
+      `<span class="type-badge" style="background:${TYPE_COLORS[t] || '#888'}">${t}</span>`
+    ).join('');
+    const spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.id}.png`;
+    const num = String(p.id).padStart(3, '0');
+
+    return `
+      <div class="card" data-id="${p.id}">
+        <div class="card-img bg-${primaryType}">
+          <img class="sprite" src="${spriteUrl}" alt="${p.name}"
+            onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png'">
+        </div>
+        <div class="card-body">
+          <div class="card-num">#${num}</div>
+          <div class="card-name">${p.name}</div>
+          <div class="types">${typeBadges}</div>
+          <div class="stats-mini">
+            <div class="stat-mini">HP <span class="stat-val">${p.hp}</span></div>
+            <div class="stat-mini">ATK <span class="stat-val">${p.attack}</span></div>
+            <div class="stat-mini">DEF <span class="stat-val">${p.defense}</span></div>
+            <div class="stat-mini">SPD <span class="stat-val">${p.speed}</span></div>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn-edit" onclick="openEdit(${p.id})">✏️ Edit</button>
+          <button class="btn-del" onclick="askDelete(${p.id},'${p.name}')">🗑️ Del</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Type checkboxes
+function buildTypeCheckboxes(selected = []) {
+  return ALL_TYPES.map(t => `
+    <label class="type-check">
+      <input type="checkbox" value="${t}" ${selected.includes(t) ? 'checked' : ''}
+        onchange="enforceMaxTypes()">
+      <span style="color:${TYPE_COLORS[t]}">${t}</span>
+    </label>
+  `).join('');
+}
+
+function enforceMaxTypes() {
+  const checks = document.querySelectorAll('#typeCheckboxes input[type=checkbox]:checked');
+  if (checks.length >= 2) {
+    document.querySelectorAll('#typeCheckboxes input[type=checkbox]:not(:checked)').forEach(c => c.disabled = true);
+  } else {
+    document.querySelectorAll('#typeCheckboxes input[type=checkbox]').forEach(c => c.disabled = false);
+  }
+}
+
+function getSelectedTypes() {
+  return [...document.querySelectorAll('#typeCheckboxes input[type=checkbox]:checked')].map(c => c.value);
+}
+
+function openModal(pokemon = null) {
+  document.getElementById('modalTitle').textContent = pokemon ? 'EDIT POKÉMON' : 'ADD POKÉMON';
+  document.getElementById('editId').value = pokemon ? pokemon.id : '';
+  document.getElementById('fName').value = pokemon ? pokemon.name : '';
+  document.getElementById('fHp').value = pokemon ? pokemon.hp : '';
+  document.getElementById('fAttack').value = pokemon ? pokemon.attack : '';
+  document.getElementById('fDefense').value = pokemon ? pokemon.defense : '';
+  document.getElementById('fSpeed').value = pokemon ? pokemon.speed : '';
+  document.getElementById('typeCheckboxes').innerHTML = buildTypeCheckboxes(pokemon ? pokemon.types : []);
+  enforceMaxTypes();
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+function openEdit(id) {
+  const p = allPokemon.find(x => x.id === id);
+  if (p) openModal(p);
+}
+
+async function savePokemon() {
+  const id = document.getElementById('editId').value;
+  const types = getSelectedTypes();
+
+  if (!document.getElementById('fName').value.trim()) { showToast('Name is required!', 'error'); return; }
+  if (types.length === 0) { showToast('Select at least one type!', 'error'); return; }
+
+  const body = {
+    name: document.getElementById('fName').value.trim(),
+    types,
+    hp: parseInt(document.getElementById('fHp').value) || 1,
+    attack: parseInt(document.getElementById('fAttack').value) || 1,
+    defense: parseInt(document.getElementById('fDefense').value) || 1,
+    speed: parseInt(document.getElementById('fSpeed').value) || 1,
+  };
+
+  try {
+    let res;
+    if (id) {
+      res = await fetch(apiUrl('/' + id), {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+    } else {
+      res = await fetch(apiUrl(), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+    }
+
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    closeModal();
+    showToast(id ? `${body.name} updated!` : `${body.name} added!`, 'success');
+    await loadPokemon();
+  } catch (e) {
+    showToast('Error saving: ' + e.message, 'error');
+  }
+}
+
+function askDelete(id, name) {
+  deleteTarget = id;
+  document.getElementById('confirmName').textContent = name;
+  document.getElementById('confirmOverlay').classList.add('open');
+}
+
+function closeConfirm() {
+  deleteTarget = null;
+  document.getElementById('confirmOverlay').classList.remove('open');
+}
+
+async function confirmDelete() {
+  if (!deleteTarget) return;
+  const id = deleteTarget;
+  closeConfirm();
+  try {
+    const res = await fetch(apiUrl('/' + id), { method: 'DELETE' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    showToast('Pokémon released!', 'success');
+    await loadPokemon();
+  } catch (e) {
+    showToast('Error deleting: ' + e.message, 'error');
+  }
+}
+
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => t.className = 'toast', 3000);
+}
+
+// Close modal on overlay click
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal')) closeModal();
+});
+
+loadPokemon();
+</script>
+</body>
+</html>

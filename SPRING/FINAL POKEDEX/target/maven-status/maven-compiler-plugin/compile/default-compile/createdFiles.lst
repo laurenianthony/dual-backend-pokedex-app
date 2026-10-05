@@ -1,0 +1,4 @@
+com\pokedex\model\Pokemon.class
+com\pokedex\controller\PokemonController.class
+com\pokedex\PokedexApplication.class
+com\pokedex\service\PokemonService.class

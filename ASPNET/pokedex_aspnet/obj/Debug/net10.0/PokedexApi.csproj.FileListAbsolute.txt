@@ -1,0 +1,104 @@
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\bin\Debug\net10.0\PokedexApi.staticwebassets.endpoints.json
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\bin\Debug\net10.0\PokedexApi.exe
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\bin\Debug\net10.0\PokedexApi.deps.json
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\bin\Debug\net10.0\PokedexApi.runtimeconfig.json
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\bin\Debug\net10.0\PokedexApi.dll
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\bin\Debug\net10.0\PokedexApi.pdb
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\PokedexApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\PokedexApi.AssemblyInfoInputs.cache
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\PokedexApi.AssemblyInfo.cs
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\PokedexApi.csproj.CoreCompileInputs.cache
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\PokedexApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\scopedcss\bundle\PokedexApi.styles.css
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\PokedexApi.dll
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\refint\PokedexApi.dll
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\PokedexApi.pdb
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\PokedexApi.genruntimeconfig.cache
+C:\Users\clyde\Downloads\aspnetg11\midterm-aspnet\obj\Debug\net10.0\ref\PokedexApi.dll
+C:\Users\clyde\Downloads\midterm-aspnet-updated\bin\Debug\net10.0\PokedexApi.staticwebassets.endpoints.json
+C:\Users\clyde\Downloads\midterm-aspnet-updated\bin\Debug\net10.0\PokedexApi.exe
+C:\Users\clyde\Downloads\midterm-aspnet-updated\bin\Debug\net10.0\PokedexApi.deps.json
+C:\Users\clyde\Downloads\midterm-aspnet-updated\bin\Debug\net10.0\PokedexApi.runtimeconfig.json
+C:\Users\clyde\Downloads\midterm-aspnet-updated\bin\Debug\net10.0\PokedexApi.dll
+C:\Users\clyde\Downloads\midterm-aspnet-updated\bin\Debug\net10.0\PokedexApi.pdb
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\PokedexApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\PokedexApi.AssemblyInfoInputs.cache
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\PokedexApi.AssemblyInfo.cs
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\PokedexApi.csproj.CoreCompileInputs.cache
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\PokedexApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\scopedcss\bundle\PokedexApi.styles.css
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\PokedexApi.dll
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\refint\PokedexApi.dll
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\PokedexApi.pdb
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\PokedexApi.genruntimeconfig.cache
+C:\Users\clyde\Downloads\midterm-aspnet-updated\obj\Debug\net10.0\ref\PokedexApi.dll
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\bin\Debug\net10.0\PokedexApi.staticwebassets.endpoints.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\bin\Debug\net10.0\PokedexApi.exe
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\bin\Debug\net10.0\PokedexApi.deps.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\bin\Debug\net10.0\PokedexApi.runtimeconfig.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\bin\Debug\net10.0\PokedexApi.dll
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\bin\Debug\net10.0\PokedexApi.pdb
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.AssemblyInfoInputs.cache
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.AssemblyInfo.cs
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.csproj.CoreCompileInputs.cache
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.MvcApplicationPartsAssemblyInfo.cache
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\scopedcss\bundle\PokedexApi.styles.css
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\staticwebassets.build.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\staticwebassets.development.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\swae.build.ex.cache
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.dll
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\refint\PokedexApi.dll
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.pdb
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.genruntimeconfig.cache
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL\pokedex_aspnet\obj\Debug\net10.0\ref\PokedexApi.dll
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\bin\Debug\net10.0\PokedexApi.staticwebassets.endpoints.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\bin\Debug\net10.0\PokedexApi.exe
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\bin\Debug\net10.0\PokedexApi.deps.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\bin\Debug\net10.0\PokedexApi.runtimeconfig.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\bin\Debug\net10.0\PokedexApi.dll
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\bin\Debug\net10.0\PokedexApi.pdb
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.AssemblyInfoInputs.cache
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.AssemblyInfo.cs
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.csproj.CoreCompileInputs.cache
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.MvcApplicationPartsAssemblyInfo.cache
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\scopedcss\bundle\PokedexApi.styles.css
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\staticwebassets.build.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\staticwebassets.development.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\swae.build.ex.cache
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.dll
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\refint\PokedexApi.dll
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.pdb
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\PokedexApi.genruntimeconfig.cache
+C:\VS CODING\VS CODE - C#\FINALS 2ND YR\FINAL ASPNET\pokedex_aspnet\obj\Debug\net10.0\ref\PokedexApi.dll
